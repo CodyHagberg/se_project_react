@@ -4,7 +4,7 @@ export const getWeather = ({latitude, longitude}, APIkey) => {
     ).then((res) => {
         if (res.ok) {
             return res.json();
-        }else {
+        } else {
             return Promise.reject(`Error: ${res.status}`);
         }
     })
@@ -25,11 +25,11 @@ const isDay = ({sunrise, sunset},now) => {
 }
 
 const getWeatherType = (temperature) => {
-     if (temperature > 86) {
+     if (temperature >= 86) {
    return 'hot';
- } else if (temperature >= 66 && temperature < 85) {
+ } else if (temperature >= 66 && temperature <= 85) {
    return 'warm';
- } else  {
+ } else {
    return 'cold';
  }
 };
