@@ -14,6 +14,14 @@ This is a small React application that fetches current weather data and recommen
 
 The app demonstrates component-based React development, state management, API integration, and conditional rendering.
 
+### Tech Stack
+
+- HTML
+- CSS
+- Responsive Design
+-Webpacks
+-React
+
 ## Features
 
 - **Weather Fetching:** Retrieves current weather data using OpenWeather API.
