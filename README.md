@@ -35,3 +35,4 @@ The app demonstrates component-based React development, state management, API in
 
 ## Video
 Link: https://drive.google.com/file/d/1kHy2Ixl-33bejzIovDXDUnzhtrgPAS1Q/view?usp=sharing
+Updated Style: https://drive.google.com/file/d/1M21TBp2RuchVVQXXv5UQVc420Vyd_YMu/view?usp=sharing
