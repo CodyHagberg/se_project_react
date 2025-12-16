@@ -8,6 +8,7 @@ import ModalWithForm from '../ModalWithForm/ModalWithForm.jsx';
 import ItemModal from '../ItemModal/ItemModal.jsx'
 import { getWeather, filterWeatherData } from '../../utils/weatherApi.js';
 
+
 function App() {
 const [weatherData, setWeatherData] = useState({type: "", temp: { F: 999}, city: ""});
 const [activeModal, setActiveModal] = useState("");
