@@ -10,6 +10,7 @@ import { getWeather, filterWeatherData } from '../../utils/weatherApi.js';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext.jsx';
 
 
+
 function App() {
 const [weatherData, setWeatherData] = useState({type: "", temp: { F: 999, C:999 }, city: ""});
 const [activeModal, setActiveModal] = useState("");
@@ -18,6 +19,7 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
 const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
+
 const handleToggleSwitchChange = () => {
   setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
 };
@@ -25,6 +27,11 @@ const handleToggleSwitchChange = () => {
 const handleCardClick = (card) => {
   setActiveModal("preview");
   setSelectedCard(card);
+};
+
+const onAddItem = (item) => {
+  setClothingItems([{ ...item, _id: Date.now() }, ...clothingItems]);
+  closeActiveModal();
 };
 
 const handleAddClick = () => {
@@ -55,6 +62,7 @@ getWeather(coordinates, APIkey)
       buttonText="Add Garment"
       activeModal={activeModal}
       handleCloseClick={closeActiveModal}
+      onAddItem={onAddItem}
       />
       <ItemModal activeModal={activeModal} card={selectedCard} handleCloseClick={closeActiveModal}/>
       <Footer />
