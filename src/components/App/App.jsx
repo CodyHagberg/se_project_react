@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import {Routes, Route } from 'react-router-dom'
 import './App.css'
 import{ coordinates, APIkey, defaultClothingItems } from '../../utils/constants.js'
 import Header from '../Header/Header.jsx' 
@@ -56,7 +57,13 @@ getWeather(coordinates, APIkey)
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData}/>
+        <Routes>
+         <Route path="/" element={
         <Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems} setClothingItems={setClothingItems}/>
+          }
+          />
+          <Route path="/profile" element={<p>PROFILE</p>} />
+          </Routes>
       </div>
       <AddItemModal
       buttonText="Add Garment"
