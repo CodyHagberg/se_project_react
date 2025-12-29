@@ -30,6 +30,12 @@
   font-weight: 700;
 }
 
+.modal__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modal__caption {
   margin: 0;
   margin-bottom: 12px;
@@ -37,4 +43,19 @@
 
 .modal__weather {
   margin: 0;
+}
+.modal__delete-button {
+  display: flex;
+  align-items: center;
+  justify-content:right;
+  font-family: "cabinet-grotesk", sans-serif;
+  padding: 8px 16px;
+  color: #FF4D00;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+  line-height: 24px;
+  background-color: transparent;
+  border-style: none;
 }

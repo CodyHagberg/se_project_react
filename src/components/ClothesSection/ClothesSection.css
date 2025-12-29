@@ -4,6 +4,31 @@
 
 .clothes-section__row {
     display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+.clothes-section__title {
+ font-family: "cabinet-grotesk", sans-serif;
+ font-size: 20px;
+ font-weight: 700;
+ font-style: bold;
+ line-height: 100%;
+ color: #000000;
+}
+
+.clothes-section__button {
+    font-family: "cabinet-grotesk", sans-serif;
+    cursor: pointer;
+    line-height: 24px;
+    background-color: transparent;
+    border-style: none;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: bold;
+    color: #00000099;
 }
 
 .clothes-section__items {

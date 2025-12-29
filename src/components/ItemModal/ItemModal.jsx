@@ -9,11 +9,13 @@ return(
         </button>
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
+        <div className="modal__header-row">
             <h2 className="modal__caption">{card.name}</h2>
-            <p className="modal__weather">Weather: {card.weather}</p>
-            <button className="modal__delete-button" onClick={() => onDelete(card._id)} type="button">
+             <button className="modal__delete-button" onClick={() => onDelete(card._id)} type="button">
                 Delete Item
             </button>
+        </div>
+            <p className="modal__weather">Weather: {card.weather}</p>
         </div>
         </div>
     </div>
