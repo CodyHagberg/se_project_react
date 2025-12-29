@@ -12,15 +12,8 @@ const { values, handleChange, setValues } = useForm(defaultValues);
 
    function handleSubmit(e) {
   e.preventDefault();
-
-  onAddItem({
-    name: values.name,
-    link: values.imageUrl,
-    weather: values.weather,
-  });
-
-  setValues(defaultValues); 
-}
+  onAddItem(values);
+   }
     
   return (
     
