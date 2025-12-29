@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {Routes, Route } from 'react-router-dom'
 import './App.css'
-import{ coordinates, APIkey, defaultClothingItems } from '../../utils/constants.js'
+import{ coordinates, APIkey } from '../../utils/constants.js'
 import Header from '../Header/Header.jsx' 
 import Main from '../Main/Main.jsx'
 import Footer from '../Footer/Footer.jsx'
@@ -10,6 +10,7 @@ import ItemModal from '../ItemModal/ItemModal.jsx';
 import Profile from '../Profile/Profile.jsx';
 import { getWeather, filterWeatherData } from '../../utils/weatherApi.js';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext.jsx';
+import { getItems } from '../../utils/api.js';
 
 
 
@@ -19,7 +20,7 @@ const [activeModal, setActiveModal] = useState("");
 const [selectedCard, setSelectedCard] = useState({});
 const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+const [clothingItems, setClothingItems] = useState([]);
 
 
 const handleToggleSwitchChange = () => {
@@ -51,6 +52,10 @@ getWeather(coordinates, APIkey)
   setWeatherData(filteredData);
 })
 .catch(console.error);
+getItems().then((data) => {
+setClothingItems(data);
+}).catch(console.error);
+
 }, []);
 
   return (
