@@ -9,7 +9,7 @@ function Main({weatherData, handleCardClick, clothingItems}) {
     return (
         <main>
             <WeatherCard weatherData={weatherData}/>
-            <section className ="cards">
+            <section className = "cards">
                 <p className="cards__text">
   Today is{" "}
   {currentTemperatureUnit === "F"

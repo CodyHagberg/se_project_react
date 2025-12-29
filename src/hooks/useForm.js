@@ -8,7 +8,6 @@ export function useForm(defaultValues) {
         setValues({
             ...values,
             [name]: value,});
-            console.log(values);
     }
     return { values, handleChange, setValues };
 }

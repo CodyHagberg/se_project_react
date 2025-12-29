@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {Routes, Route } from 'react-router-dom'
 import './App.css'
-import{ coordinates, APIkey } from '../../utils/constants.js'
+import{ coordinates, apiKey } from '../../utils/constants.js'
 import Header from '../Header/Header.jsx' 
 import Main from '../Main/Main.jsx'
 import Footer from '../Footer/Footer.jsx'
@@ -65,7 +65,7 @@ setActiveModal("");
 };
 
 useEffect(() => {
-getWeather(coordinates, APIkey)
+getWeather(coordinates, apiKey)
 .then((data) => {
   const filteredData = filterWeatherData(data);
   setWeatherData(filteredData);
@@ -87,7 +87,7 @@ setClothingItems(data.reverse());
         <Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems} setClothingItems={setClothingItems}/>
           }
           />
-          <Route path="/profile" element={<Profile onCardClick={handleCardClick} clothingItems={clothingItems}/>}/>
+          <Route path="/profile" element={<Profile onCardClick={handleCardClick} clothingItems={clothingItems} handleAddClick={handleAddClick} activeModal={activeModal}/>}/>
           </Routes>
       </div>
       <AddItemModal
