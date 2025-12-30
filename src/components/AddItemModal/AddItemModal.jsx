@@ -13,11 +13,12 @@ const { values, handleChange, setValues } = useForm(defaultValues);
    function handleSubmit(e) {
   e.preventDefault();
   onAddItem(values);
+  setValues(defaultValues);
    }
     
   return (
     
-    <ModalWithForm title="New Garment" name="new-card" handleCloseClick={handleCloseClick} onSubmit={handleSubmit} activeModal={activeModal} buttonText={buttonText}>
+    <ModalWithForm title="New Garment" name="new-card" handleCloseClick={handleCloseClick} onSubmit={handleSubmit} isOpen={activeModal === "add-garment"} buttonText={buttonText}>
       <label htmlFor="name" className="modal__label">
             Name {""}
             <input type="text"

@@ -84,10 +84,22 @@ setClothingItems(data.reverse());
         <Header handleAddClick={handleAddClick} weatherData={weatherData}/>
         <Routes>
          <Route path="/" element={
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems} setClothingItems={setClothingItems}/>
+        <Main
+         weatherData={weatherData}
+         handleCardClick={handleCardClick} 
+         clothingItems={clothingItems} 
+        />
           }
           />
-          <Route path="/profile" element={<Profile onCardClick={handleCardClick} clothingItems={clothingItems} handleAddClick={handleAddClick} activeModal={activeModal}/>}/>
+          <Route 
+          path="/profile" 
+          element={<Profile onCardClick={handleCardClick} 
+          clothingItems={clothingItems} 
+          handleAddClick={handleAddClick} 
+          activeModal={activeModal}
+          />
+        }
+        />
           </Routes>
       </div>
       <AddItemModal
@@ -96,7 +108,12 @@ setClothingItems(data.reverse());
       handleCloseClick={closeActiveModal}
       onAddItem={onAddItem}
       />
-      <ItemModal activeModal={activeModal} card={selectedCard} handleCloseClick={closeActiveModal} onDelete={handleDeleteItem}/>
+      <ItemModal 
+      activeModal={activeModal} 
+      card={selectedCard} 
+      handleCloseClick={closeActiveModal} 
+      onDelete={handleDeleteItem}
+      />
       <Footer />
     </div>
     </CurrentTemperatureUnitContext.Provider>

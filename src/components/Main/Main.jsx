@@ -8,7 +8,9 @@ function Main({weatherData, handleCardClick, clothingItems}) {
     const {currentTemperatureUnit} = useContext(CurrentTemperatureUnitContext);
     return (
         <main>
-            <WeatherCard weatherData={weatherData}/>
+            <WeatherCard 
+            weatherData={weatherData}
+            />
             <section className = "cards">
                 <p className="cards__text">
   Today is{" "}
