@@ -14,7 +14,9 @@
   width: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 0;       
+  border-radius: 0;   
+  width: 498px;
+  height: 498px;    
 }
 
 .modal__footer {

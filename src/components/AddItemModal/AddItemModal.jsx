@@ -16,8 +16,10 @@ const AddItemModal = ({
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(values);
-    setValues(defaultValues);
+    const resetForm = () => {
+      setValues(defaultValues);
+    };
+    onAddItem(values, resetForm);
   }
 
   return (
