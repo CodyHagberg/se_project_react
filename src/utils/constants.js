@@ -61,6 +61,8 @@ export const weatherOptions = [
   },
 ];
 
+//Find Holliday cards to add a theme to the days of the year like Christmas, Halloween, Valentines, etc.
+
 export const defaultWeatherOption = {
   day: {
     url: new URL("../assets/day/default.png", import.meta.url).href,
