@@ -1,5 +1,6 @@
-import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
-import { useForm } from "../hooks/useForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
+import { useForm } from "../../hooks/useForm.js";
+import "./LoginModal.css";
 
 function LoginModal({ isOpen, onClose, onLogin }) {
   const { values, handleChange, resetForm } = useForm({
@@ -18,26 +19,34 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       name="login"
       buttonText="Log In"
       isOpen={isOpen}
-      onClose={onClose}
+      handleCloseClick={onClose}
       onSubmit={handleSubmit}
     >
+      <label htmlFor="email" className="modal__label">
         <input
         type="email"
+        className="modal__input"
+        id="email"
         name="email"
         required
         placeholder="Email"
         value={values.email}
         onChange={handleChange}
         />
+      </label>
 
+      <label htmlFor="password" className="modal__label">
         <input
         type="password"
+        className="modal__input"
+        id="password"
         name="password"
         required
         placeholder="Password"
         value={values.password}
         onChange={handleChange}
         />
+      </label>
     </ModalWithForm>
     );
 }

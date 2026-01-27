@@ -46,11 +46,11 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
       </NavLink>
       ) : ( 
         <div className="header__auth-buttons">
-          <button onClick={handleLoginClick} className="header__login-btn">
-            Log In
-          </button>
           <button onClick={handleRegisterClick} className="header__register-btn">
             Sign Up
+          </button>
+          <button onClick={handleLoginClick} className="header__login-btn">
+            Log In
           </button>
         </div>
       )}
