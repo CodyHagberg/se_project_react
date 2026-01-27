@@ -9,11 +9,12 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 import Profile from "../Profile/Profile.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
-import { addItem, getItems, removeItem } from "../../utils/api.js";
+import { addItem, getItems, removeItem, updateUser } from "../../utils/api.js";
 import { register, login, verifyToken } from "../../utils/auth.js";
 
 function App() {
@@ -30,6 +31,15 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+ function handleUpdateUser(data) {
+  updateUser(data)
+    .then((updatedUser) => {
+      setCurrentUser(updatedUser);
+      closeActiveModal();
+    })
+    .catch(console.error);
+}
 
   function handleRegister(data) {
   register(data)
@@ -164,7 +174,7 @@ useEffect(() => {
                  onCardClick={handleCardClick}
                  clothingItems={clothingItems}
                  handleAddClick={handleAddClick}
-                 activeModal={activeModal}
+                 onEditProfile={() => setActiveModal("edit-profile")}
                />
                ) : (
              <Navigate to="/" replace />
@@ -195,6 +205,11 @@ useEffect(() => {
          isOpen={activeModal === "login"}
          onClose={closeActiveModal}
          onLogin={handleLogin}
+        />
+        <EditProfileModal
+         isOpen={activeModal === "edit-profile"}
+         onClose={closeActiveModal}
+         onUpdateUser={handleUpdateUser}
         />
         <Footer />
       </div>

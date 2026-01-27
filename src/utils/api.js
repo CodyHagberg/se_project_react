@@ -34,3 +34,20 @@ export function removeItem(itemId) {
     headers,
   }).then(handleServerResponse);
 }
+
+export const updateUser = ({ name, avatar }) => {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  });
+}
