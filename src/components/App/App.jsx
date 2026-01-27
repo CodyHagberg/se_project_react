@@ -144,7 +144,7 @@ useEffect(() => {
       <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header handleAddClick={handleAddClick} handleLoginClick={handleLoginClick} handleRegisterClick={handleRegisterClick} isLoggedIn={isLoggedIn} weatherData={weatherData} />
           <Routes>
             <Route
               path="/"
