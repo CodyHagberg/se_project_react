@@ -33,10 +33,13 @@ The app demonstrates component-based React development, state management, API in
 - **State Management:** `App` component manages clothing items and modal state centrally.
 - **Dynamic Filtering:** Clothing suggestions are filtered based on weather type.
 
-## Video
+### Video
 Link: https://drive.google.com/file/d/1kHy2Ixl-33bejzIovDXDUnzhtrgPAS1Q/view?usp=sharing
 Updated Style: https://drive.google.com/file/d/1M21TBp2RuchVVQXXv5UQVc420Vyd_YMu/view?usp=sharing
 
-## Github Pages
+##### Backend Repo
+https://github.com/CodyHagberg/se_project_express
+
+###### Github Pages
 I was having issues with this. I can not get the pages to work with my react project
 https://codyhagberg.github.io/se_project_react/

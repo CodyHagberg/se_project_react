@@ -73,8 +73,8 @@ function App() {
       })
       .catch(console.error);
     getItems()
-      .then((data) => {
-        setClothingItems(data.reverse());
+      .then((items) => {
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);
