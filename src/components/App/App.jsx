@@ -54,6 +54,13 @@ function App() {
   }
 };
 
+function handleSignOut() {
+  localStorage.removeItem("jwt");
+  setIsLoggedIn(false);
+  setCurrentUser(null);
+  setActiveModal("");
+}
+
  function handleUpdateUser(data) {
   updateUser(data)
     .then((updatedUser) => {
@@ -198,6 +205,7 @@ useEffect(() => {
                  clothingItems={clothingItems}
                  handleAddClick={handleAddClick}
                  onEditProfile={() => setActiveModal("edit-profile")}
+                 onSignOut={handleSignOut}
                />
                ) : (
              <Navigate to="/" replace />

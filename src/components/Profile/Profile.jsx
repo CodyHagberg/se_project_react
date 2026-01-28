@@ -7,10 +7,11 @@ export default function Profile({
   onCardClick,
   handleAddClick,
   onEditProfile,
+  onSignOut,
 }) {
   return (
     <section className="profile">
-      <SideBar onEditProfile={onEditProfile}/>
+      <SideBar onEditProfile={onEditProfile} onSignOut={onSignOut} />
       <ClothesSection
         onCardClick={onCardClick}
         clothingItems={clothingItems}

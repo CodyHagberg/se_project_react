@@ -13,6 +13,9 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const isLiked = item.likes?.some(
     (id) => id === currentUser?._id
   );
+  const itemLikeButtonClassName = `card__like-button ${
+    isLiked ? "card__like-button_liked" : ""
+  }`;
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -33,7 +36,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         {isLoggedIn && (
           <button
             type="button"
-            className="card__like-button"
+            className={itemLikeButtonClassName}
             onClick={handleLikeClick}
           >
             <img
