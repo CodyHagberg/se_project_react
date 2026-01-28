@@ -1,34 +1,48 @@
 .card {
- width: 323px;
- position: relative;
- display: flex;
- justify-content: center;
- 
+  width: 323px;
+  position: relative;
+   list-style: none; 
+  padding: 0;      
+  margin: 0;        
+  display: flex;    
+  flex-wrap: wrap;  
+  font-family: "cabinet-grotesk", sans-serif;
+}
+
+.card__header {
+  position: absolute;
+  top: 15px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  display: flex;
+  align-items: center;
+  gap: 10px; 
 }
 
 .card__name {
-  padding: 2px 12px;
+  width: 74px;    
+  height: 24px;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 24px;
   color: rgba(0, 0, 0, 0.6);
   background-color: white;
   border-radius: 4px;
-  margin: 0 10px 0 0;
-  max-width: 200px;
-  position: absolute;
-  top: 15px;
   margin: 0;
-
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .card__image {
-    width: 323px;
-    height: 326px;
-    border-radius: 19px;
-    object-fit: cover;
-    object-position: center;
-    cursor: pointer;
+  width: 323px;
+  height: 326px;
+  border-radius: 19px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
 }
 
 .card__like-button {
@@ -41,4 +55,13 @@
 .card__like-icon {
   width: 18px;
   height: 18px;
+}
+
+.cards__list {
+  list-style: none; /* removes the bullet/dot */
+  padding: 0;       /* removes default padding */
+  margin: 0;        /* removes default margin */
+  display: flex;    /* optional: if you want items in a row */
+  flex-wrap: wrap;  /* optional: wrap items to next line */
+  gap: 20px;        /* optional: space between cards */
 }

@@ -1,24 +1,76 @@
 
-.sidebar__user-container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: 16px;
+.sidebar {
+  width: 229px;
+  height: 138px;
+  padding-left: 40px; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px; 
+  font-family: "cabinet-grotesk", sans-serif;
 }
 
-.sidebar__username {
-    margin: 0;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 20px;
-    line-height: 24px;
+.sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
 }
 
-.sidebar__avatar {
-    margin-left: 12px;
-    flex: 0 0 40px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit:cover;
-    display: block;
+.sidebar__avatar { 
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ccc; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+}
+
+.sidebar__name {
+  font-family: "cabinet-grotesk", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.sidebar__edit-button {
+  font-family: "cabinet-grotesk", sans-serif;
+  margin-top: 24px; 
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: Bold;
+  line-height: 100%;
+  border: none;
+  margin-bottom: 8px;
+  color: black;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sidebar__signout-btn {
+  font-family: "cabinet-grotesk", sans-serif;
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: Bold;
+  line-height: 100%;
+  border-radius: 8px;
+  border: none;
+  color: black;
+  cursor: pointer;
 }

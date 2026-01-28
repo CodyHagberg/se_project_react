@@ -3,7 +3,6 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import "./Header.css";
 import logo from "../../assets/wtwr logo.svg";
-import avatar from "../../assets/Ellipse.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 
 function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterClick, isLoggedIn }) {
@@ -21,6 +20,7 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>
+      <div className="header__right">
       <ToggleSwitch />
       {isLoggedIn && ( 
       <button
@@ -35,7 +35,7 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
       <NavLink className="header__nav-link" to="/profile">
         <div className="header__user-container">
           <p className="header__username">{currentUser.name}</p>
-          {currentUser.avater ? ( 
+          {currentUser.avatar ? ( 
           <img className="header__avatar" alt={currentUser.name} src={currentUser.avatar} />
           ) : (
             <div className="header__avatar-placeholder">
@@ -54,6 +54,7 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
           </button>
         </div>
       )}
+      </div>
     </header>
   );
 }
