@@ -19,7 +19,6 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
     <ModalWithForm
       title="Register"
       buttonText="Sign Up"
-      ButtonText="Sign Up"
       isOpen={isOpen}
       handleCloseClick={onClose}
       onSubmit={handleSubmit}

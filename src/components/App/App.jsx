@@ -14,7 +14,7 @@ import Profile from "../Profile/Profile.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
-import { addItem, getItems, removeItem, updateUser } from "../../utils/api.js";
+import { addItem, getItems, removeItem, updateUser,addCardLike, removeCardLike, } from "../../utils/api.js";
 import { register, login, verifyToken } from "../../utils/auth.js";
 
 function App() {
@@ -31,6 +31,28 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+  const handleCardLike = ({ id, isLiked }) => {
+  const token = localStorage.getItem("jwt");
+
+  if (!isLiked) {
+    addCardLike(id, token)
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch(console.error);
+  } else {
+    removeCardLike(id, token)
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch(console.error);
+  }
+};
 
  function handleUpdateUser(data) {
   updateUser(data)
@@ -163,6 +185,7 @@ useEffect(() => {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onCardLike={handleCardLike}
                 />
               }
             />
