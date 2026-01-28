@@ -22,7 +22,19 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
       isOpen={isOpen}
       handleCloseClick={onClose}
       onSubmit={handleSubmit}
+       secondaryAction={
+    <button
+      type="button"
+      className="modal__secondary-button"
+      onClick={() => {
+        onClose();
+      }}
     >   
+    Log in 
+    </button>
+       }
+       >
+        
       <label htmlFor="email" className="modal__label">
         Email* {""}
         <input

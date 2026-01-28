@@ -33,18 +33,19 @@
 
 .modal__radio-buttons {
     display: flex;
-    flex-direction: column; /* stack radio options vertically */
-    align-items: left;
-    gap: 8px; /* space between each option */
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 8px; 
     margin-top: 12px;
     border: none;
     padding: 0;
 }
 
-.modal__label_type_radio {
-    display: flex;        /* put radio to left of text */
-    align-items: left;  /* vertically center radio + text */
-    gap: 8px;             /* space between radio and text */
+.modal__label.modal__label_type_radio {
+    display: flex;
+    flex-direction: row;       
+    align-items: center;  
+    gap: 8px;             
     font-size: 16px;
     line-height: 20px;
     cursor: pointer;
@@ -53,7 +54,7 @@
 .modal__radio-input {
     accent-color: #000; 
     cursor: pointer;
-    /* margin-right removed because we use gap in flex */
+   
 }
 
 .modal__label_type_radio input:checked + span {

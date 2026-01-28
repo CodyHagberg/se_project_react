@@ -90,3 +90,9 @@
 .modal__submit:active {
     background-color: #000000 ;
 }
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

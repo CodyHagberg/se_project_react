@@ -21,6 +21,17 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       isOpen={isOpen}
       handleCloseClick={onClose}
       onSubmit={handleSubmit}
+      secondaryAction={
+    <button
+      type="button"
+      className="modal__secondary-button"
+      onClick={() => {
+        onClose();
+      }}
+    >   
+   Sign up
+    </button>
+       }
     >
       <label htmlFor="email" className="modal__label">
         <input
