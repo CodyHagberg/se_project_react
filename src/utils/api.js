@@ -10,9 +10,7 @@ export const handleServerResponse = (res) => {
 
 export const getItems = () => {
   return fetch(`${baseUrl}/items`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
   }).then(handleServerResponse);
 };
 
@@ -21,7 +19,7 @@ export function addItem({ name, imageUrl, weather }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      ...headers,
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
@@ -33,7 +31,7 @@ export function removeItem(itemId) {
   return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      ...headers,
       Authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
@@ -44,23 +42,18 @@ export const updateUser = ({ name, avatar }) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
-      "Content-Type": "application/json",
+      ...headers,
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  });
-}
+  }).then(handleServerResponse);
+};
 
 export const addCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
+      ...headers,
       Authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
@@ -70,7 +63,7 @@ export const removeCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+     ...headers,
       Authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);

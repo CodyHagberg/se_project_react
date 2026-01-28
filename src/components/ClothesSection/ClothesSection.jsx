@@ -7,6 +7,7 @@ export default function ClothesSection({
   clothingItems,
   onCardClick,
   handleAddClick,
+  onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const userItems = clothingItems.filter((item => item.owner === currentUser?._id));
@@ -25,6 +26,7 @@ export default function ClothesSection({
               key={item._id || item.name}
               item={item}
               onCardClick={onCardClick}
+              onCardLike={onCardLike}
             />
           );
         })}

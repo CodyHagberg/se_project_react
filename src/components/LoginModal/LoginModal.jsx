@@ -3,7 +3,7 @@ import { useForm } from "../../hooks/useForm.js";
 import "./LoginModal.css";
 
 function LoginModal({ isOpen, onClose, onLogin }) {
-  const { values, handleChange, resetForm } = useForm({
+  const { values, handleChange } = useForm({
     email: "",
     password: "",
   });
@@ -33,11 +33,11 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     </button>
        }
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         <input
         type="email"
         className="modal__input"
-        id="email"
+        id="login-email"
         name="email"
         required
         placeholder="Email"
@@ -46,11 +46,11 @@ function LoginModal({ isOpen, onClose, onLogin }) {
         />
       </label>
 
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         <input
         type="password"
         className="modal__input"
-        id="password"
+        id="login-password"
         name="password"
         required
         placeholder="Password"

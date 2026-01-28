@@ -14,8 +14,9 @@ import Profile from "../Profile/Profile.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
-import { addItem, getItems, removeItem, updateUser,addCardLike, removeCardLike, } from "../../utils/api.js";
+import { addItem, getItems, removeItem, updateUser, addCardLike, removeCardLike, } from "../../utils/api.js";
 import { register, login, verifyToken } from "../../utils/auth.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -199,17 +200,16 @@ useEffect(() => {
             <Route
                path="/profile"
                element={
-               isLoggedIn ? (
-               <Profile
-                 onCardClick={handleCardClick}
-                 clothingItems={clothingItems}
-                 handleAddClick={handleAddClick}
-                 onEditProfile={() => setActiveModal("edit-profile")}
-                 onSignOut={handleSignOut}
-               />
-               ) : (
-             <Navigate to="/" replace />
-             )
+               <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                     onCardClick={handleCardClick}
+                     onCardLike={handleCardLike}
+                     clothingItems={clothingItems}
+                     handleAddClick={handleAddClick}
+                     onEditProfile={() => setActiveModal("edit-profile")}
+                     onSignOut={handleSignOut}
+                    />
+                     </ProtectedRoute>
                }
             />
           </Routes>

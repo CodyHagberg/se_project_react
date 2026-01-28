@@ -5,6 +5,7 @@ import SideBar from "../SideBar/SideBar.jsx";
 export default function Profile({
   clothingItems,
   onCardClick,
+  onCardLike,
   handleAddClick,
   onEditProfile,
   onSignOut,
@@ -14,6 +15,7 @@ export default function Profile({
       <SideBar onEditProfile={onEditProfile} onSignOut={onSignOut} />
       <ClothesSection
         onCardClick={onCardClick}
+        onCardLike={onCardLike}
         clothingItems={clothingItems}
         handleAddClick={handleAddClick}
       />

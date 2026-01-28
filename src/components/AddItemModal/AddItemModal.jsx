@@ -31,12 +31,12 @@ const AddItemModal = ({
       isOpen={activeModal === "add-garment"}
       buttonText={buttonText}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="add-name" className="modal__label">
         Name {""}
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="add-name"
           name="name"
           placeholder="Name"
           value={values.name}
@@ -44,12 +44,12 @@ const AddItemModal = ({
           required
         />
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="add-imageUrl" className="modal__label">
         Image {""}
         <input
           type="url"
           className="modal__input"
-          id="imageUrl"
+          id="add-imageUrl"
           name="imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}
