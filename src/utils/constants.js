@@ -77,3 +77,7 @@ export const coordinates = {
   longitude: -111.925278,
 };
 export const apiKey = "d968e52b5f270da8356e54f0c6f6843e";
+
+export const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wearthatweatherradar.csproject.org"
+  : "http://localhost:3001";

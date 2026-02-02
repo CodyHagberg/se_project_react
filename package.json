@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://wearthatweatherradar.csproject.org",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && scp -r ./dist/* codyhagberg1117@wearthatweatherradar.csproject.org:/home/codyhagberg1117/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",
