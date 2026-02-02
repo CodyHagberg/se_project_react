@@ -40,6 +40,6 @@ Updated Style: https://drive.google.com/file/d/1M21TBp2RuchVVQXXv5UQVc420Vyd_YMu
 ##### Backend Repo
 https://github.com/CodyHagberg/se_project_express
 
-###### Github Pages
-I was having issues with this. I can not get the pages to work with my react project
-https://codyhagberg.github.io/se_project_react/
+
+###### Domain Name
+https://wearthatweatherradar.csproject.org/
