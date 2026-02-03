@@ -1,8 +1,9 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { useForm } from "../../hooks/useForm.js";
 import "./LoginModal.css";
+import { login, getCurrentUser } from "../../utils/api.js";
 
-function LoginModal({ isOpen, onClose, onLogin }) {
+function LoginModal({ isOpen, onClose, setCurrentUser, setIsLoggedIn }) {
   const { values, handleChange } = useForm({
     email: "",
     password: "",
@@ -10,7 +11,20 @@ function LoginModal({ isOpen, onClose, onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin(values);
+    login(values)
+      .then((data) => {
+        localStorage.setItem("jwt", data.token);
+        setIsLoggedIn(true);
+        return getCurrentUser(data.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
+        onClose();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Login failed. Please check your credentials and try again.");
+      });
   }
 
     return (

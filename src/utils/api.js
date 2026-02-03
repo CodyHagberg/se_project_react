@@ -49,6 +49,31 @@ export const updateUser = ({ name, avatar }) => {
   }).then(handleServerResponse);
 };
 
+export const login = ({ email, password }) => {
+  return fetch(`${baseUrl}/signin`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ email, password }),
+  }).then(handleServerResponse);
+};
+
+export const register = ({ email, password }) => {
+  return fetch(`${baseUrl}/signup`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ email, password }),
+  }).then(handleServerResponse);
+};
+
+export const getCurrentUser = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
 export const addCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
