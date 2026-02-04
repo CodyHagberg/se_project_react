@@ -15,7 +15,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import { addItem, getItems, removeItem, updateUser, addCardLike, removeCardLike, } from "../../utils/api.js";
-import { register, login, verifyToken } from "../../utils/auth.js";
+import { register, login, getCurrentUser } from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
@@ -102,7 +102,7 @@ useEffect(() => {
 
   if (!token) return;
 
-  verifyToken(token)
+  getCurrentUser(token)
     .then((user) => {
       setCurrentUser(user);
       setIsLoggedIn(true);
