@@ -65,7 +65,7 @@ export const register = ({ email, password }) => {
   }).then(handleServerResponse);
 };
 
-export const getCurrentUser = (token) => {
+export const verifyToken = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     headers: {
       ...headers,
