@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { useForm } from "../../hooks/useForm.js";
 import "./LoginModal.css";
-import { login, verifyToken } from "../../utils/api.js";
+import { login, getCurrentUser } from "../../utils/api.js";
 
 function LoginModal({ isOpen, onClose, setCurrentUser, setIsLoggedIn }) {
   const { values, handleChange } = useForm({
@@ -15,7 +15,7 @@ function LoginModal({ isOpen, onClose, setCurrentUser, setIsLoggedIn }) {
       .then((data) => {
         localStorage.setItem("jwt", data.token);
         setIsLoggedIn(true);
-        return verifyToken(data.token);
+        return getCurrentUser(data.token);
       })
       .then((userData) => {
         setCurrentUser(userData);
