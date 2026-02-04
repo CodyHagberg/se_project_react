@@ -172,7 +172,7 @@ useEffect(() => {
         setClothingItems(items.reverse());
       })
       .catch(console.error);
-  }, []);
+  }, [currentUser]);
 
   return (
     <CurrentTemperatureUnitContext.Provider
