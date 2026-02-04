@@ -33,25 +33,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  const handleCardLike = ({ id, isLiked }) => {
-  const token = localStorage.getItem("jwt");
-
-  if (!isLiked) {
-    addCardLike(id, token)
-      .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
-        );
-      })
-      .catch(console.error);
-  } else {
-    removeCardLike(id, token)
-      .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
-        );
-      })
-      .catch(console.error);
+  const handleCardLike = async ({ id, isLiked }) => {
+  try {
+    const token = localStorage.getItem("jwt");
+    const updatedCard = isLiked ? await removeCardLike(id, token) : await addCardLike(id, token);
+    setClothingItems((cards) =>
+      cards.map((item) => (item._id === id ? updatedCard : item))
+    );
+  } catch (err) {
+    console.error(err);
   }
 };
 
@@ -72,17 +62,17 @@ function handleSignOut() {
 }
 
   function handleRegister(data) {
-  register(data)
-    .then(() => {
-      return login({
-        email: data.email,
-        password: data.password,
-      });
-    })
+  return register(data)
+    .then(() => login({ email: data.email, password: data.password }))
     .then((res) => {
       localStorage.setItem("jwt", res.token);
+      return getCurrentUser(res.token); 
+    })
+    .then((userData) => {
+      setCurrentUser(userData);
       setIsLoggedIn(true);
       closeActiveModal();
+      return userData; 
     })
     .catch(console.error);
 }
@@ -91,6 +81,10 @@ function handleSignOut() {
   login(data)
     .then((res) => {
       localStorage.setItem("jwt", res.token);
+      return getCurrentUser(res.token);
+    })
+    .then((userData) => {
+      setCurrentUser(userData);
       setIsLoggedIn(true);
       closeActiveModal();
     })
@@ -123,14 +117,17 @@ useEffect(() => {
 
   const token = localStorage.getItem("jwt");
 
-  const handleDeleteItem = (id) => {
-    removeItem(id, token)
-      .then(() => {
-        setClothingItems((prev) => prev.filter((item) => item._id !== id));
-        closeActiveModal();
-      })
-      .catch(console.error);
-  };
+ const handleDeleteItem = async (id) => {
+  try {
+    const token = localStorage.getItem("jwt");
+    await removeItem(id, token);
+    setClothingItems((prev) => prev.filter((item) => item._id !== id));
+    closeActiveModal();
+  } catch (err) {
+    console.error(err);
+    alert("Failed to delete item. You might not have permission.");
+  }
+};
 
   const onAddItem = (inputValues) => {
     const newCardData = {
@@ -235,7 +232,8 @@ useEffect(() => {
         <LoginModal
          isOpen={activeModal === "login"}
          onClose={closeActiveModal}
-         onLogin={handleLogin}
+         setCurrentUser={setCurrentUser}
+         setIsLoggedIn={setIsLoggedIn}
         />
         <EditProfileModal
          isOpen={activeModal === "edit-profile"}

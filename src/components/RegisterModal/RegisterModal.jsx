@@ -7,12 +7,20 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
     email: "",
     password: "",
     name: "",
+    avatar: "",
   });
 
-  function handleSubmit(e) {
+   function handleSubmit(e) {
     e.preventDefault();
-    onRegister(values);
-    resetForm();
+    onRegister(values)
+      .then(() => {
+        resetForm();
+        onClose();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Registration failed. Please try again.");
+      });
   }
 
     return (

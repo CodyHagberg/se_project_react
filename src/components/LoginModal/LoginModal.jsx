@@ -3,30 +3,27 @@ import { useForm } from "../../hooks/useForm.js";
 import "./LoginModal.css";
 import { login, getCurrentUser } from "../../utils/api.js";
 
+
 function LoginModal({ isOpen, onClose, setCurrentUser, setIsLoggedIn }) {
   const { values, handleChange } = useForm({
     email: "",
     password: "",
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    login(values)
-      .then((data) => {
-        localStorage.setItem("jwt", data.token);
-        setIsLoggedIn(true);
-        return getCurrentUser(data.token);
-      })
-      .then((userData) => {
-        setCurrentUser(userData);
-        setIsLoggedIn(true);
-        onClose();
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Login failed. Please check your credentials and try again.");
-      });
+  async function handleSubmit(e) {
+  e.preventDefault();
+  try {
+    const { token } = await login(values);
+    localStorage.setItem("jwt", token);
+    const userData = await getCurrentUser(token);
+    setCurrentUser(userData);
+    setIsLoggedIn(true);
+    onClose();
+  } catch (err) {
+    console.error(err);
+    alert("Login failed. Please check your credentials and try again.");
   }
+}
 
     return (
     <ModalWithForm
