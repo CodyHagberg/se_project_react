@@ -161,6 +161,7 @@ useEffect(() => {
   };
 
   useEffect(() => {
+    if (!currentUser) return;
     getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);

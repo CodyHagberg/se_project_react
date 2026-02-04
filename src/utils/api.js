@@ -9,8 +9,12 @@ export const handleServerResponse = (res) => {
 };
 
 export const getItems = () => {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
   }).then(handleServerResponse);
 };
 
